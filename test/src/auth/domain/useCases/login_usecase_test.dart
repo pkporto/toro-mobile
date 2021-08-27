@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:toro_mobile/src/auth/domain/entities/logged_user.dart';
 import 'package:toro_mobile/src/auth/domain/errors/errors.dart';
@@ -6,12 +7,10 @@ import 'package:toro_mobile/src/auth/domain/useCases/login_usecase.dart';
 
 class AuthRepositoryMock implements AuthRepository {
   @override
-  Future<LoggedUser> login(CredentialParams params) async {
-    return LoggedUser(
-      email: params.email,
-      cpf: '111',
-      password: '',
-    );
+  Future<Either<AuthException, LoggedUser>> login(
+      CredentialParams params) async {
+    // TODO: implement login
+    return Right((LoggedUser(email: params.email, cpf: '123', password: '11')));
   }
 }
 
@@ -24,16 +23,16 @@ void main() {
       password: '123',
     ));
 
-    expect(result, isA<LoggedUser>());
-    expect(result.cpf, '111');
+    expect(result.isRight(), true);
+    // expect(result.cpf, '111');
   });
 
   test('Error if password is empty', () async {
-    final result = useCase.execute(CredentialParams(
+    final result = await useCase.execute(CredentialParams(
       email: 'patrick@gmail.com',
       password: '',
     ));
 
-    expect(() async => await result, throwsA(isA<AuthException>()));
+    expect(result.isLeft(), true);
   });
 }
