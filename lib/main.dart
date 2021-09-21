@@ -1,4 +1,6 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:toro_mobile/src/onboarding/page/onboarding_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +24,11 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: AnimatedSplashScreen(
+        splash: Image.asset('assets/images/logo-icon.png'),
+        nextScreen: OnBoardingPage(),
+        splashTransition: SplashTransition.fadeTransition,
+      ),
     );
   }
 }
