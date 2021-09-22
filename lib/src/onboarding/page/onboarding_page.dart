@@ -24,12 +24,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
   List<OnboardingPageContent> contents = [
     OnboardingPageContent(
         title: "Olá!",
-        image: "images/step1.svg",
+        image: "assets/images/step1.svg",
         description:
             "O composição fácil tem a intenção de tornar mais rápido e prático o processo de compor a parte instrumental de uma música."),
     OnboardingPageContent(
         title: "Bem vinda(o)!",
-        image: "images/violao.svg",
+        image: "assets/images/step1.svg",
         description:
             "O composição fácil dsadsaddddddddddesso de compor a parte instrumental de uma música."),
   ];
